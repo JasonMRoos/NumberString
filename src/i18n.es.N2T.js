@@ -18,15 +18,6 @@
             "7":"siete",
             "8":"ocho",
             "9":"nueve",
-            "01":"uno",
-            "02":"dos",
-            "03":"tres",
-            "04":"cuatro",
-            "05":"cinco",
-            "06":"seis",
-            "07":"siete",
-            "08":"ocho",
-            "09":"nueve",
             "10":"diez",
             "11":"once",
             "12":"doce",
@@ -39,7 +30,6 @@
             "19":"diecinueve"
         },
         "tens":{
-            "0":"",
             "2":"veinte",
             "3":"treinta",
             "4":"cuarenta",
