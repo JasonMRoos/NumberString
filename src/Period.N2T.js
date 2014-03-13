@@ -3,7 +3,7 @@
  * 
  * Description:
  * Class with methods specific to numeric "periods," the sequences of 1-3 digits
- * into which long numbers are grouped, and required by NumericInteger.N2T.js.
+ * into which long numbers are grouped, and required by NumberString.N2T.js.
  *
  **/
 (function (global_object) {
