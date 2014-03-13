@@ -23,11 +23,11 @@
     NumberString.prototype = Object.create(String.prototype);
     NumberString.prototype.constructor = NumberString;
 
-    NumberString.prototype.trimZeros = function() {
+    NumberString.prototype.trimZeros = function () {
         return NumberString.trimZeros(this.value);
     };
 
-    NumberString.prototype.trimCommas = function() {
+    NumberString.prototype.trimCommas = function () {
         return NumberString.trimCommas(this.value);
     };
 
@@ -47,7 +47,7 @@
         return decimal_part && '.' + decimal_part;
     }
 
-    NumberString.prototype.format = function() {
+    NumberString.prototype.format = function () {
         var whole_part_formatted = this.formatWholePart(),
             decimal_part_formatted = this.formatDecimalPart();
 
