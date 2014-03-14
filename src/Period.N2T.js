@@ -50,7 +50,7 @@
         return !!N2T.i18n[language].ones_and_teens[this.getTens() + this.getOnes()];
     }
 
-    Period.prototype.tensAndOnesSpelled = function () {
+    function tensAndOnesSpelled() {
         if (this.value < 20) {
             return N2T.i18n[language].ones_and_teens[this.getTensAndOnes()];
         } else if (this.hasTeens()) {
@@ -66,7 +66,7 @@
         }
     }
 
-    Period.prototype.hundredsSpelled = function () {
+    function hundredsSpelled() {
         return this.hasHundreds()
             ? N2T.i18n[language].ones_and_teens[this.getHundreds()] + ' ' + N2T.i18n[language].periods[1]
             : '';
@@ -74,8 +74,8 @@
 
     Period.prototype.spell = function () {
         return this.hasHundreds()
-            ? this.hundredsSpelled() + ' ' + this.tensAndOnesSpelled()        
-            : this.tensAndOnesSpelled();  
+            ? hundredsSpelled.call(this) + ' ' + tensAndOnesSpelled.call(this)        
+            : tensAndOnesSpelled.call(this);  
     }
 
     global_object.N2T = global_object.N2T || {};
