@@ -49,12 +49,14 @@
         var is_zero_number = period_value == 0 && num_periods == 1 && this.type == 'whole';
 
         if (period_value == 0 && !is_zero_number) {
-            // In the whole part, periods without value are never named (ex. 1000), with the exception of '0'.
+            // In the whole part, periods without value are never named, with the exception of '0'.
+            // (ex. 1,000 is read, "one thousand," and not, "one thousand zero hundreds")
             if (this.type == 'whole' && period_position > 0) {
                 return true;
             }
 
-            // In the decimal part, periods without value are named only if they are in the period of least value (ex. .0001)
+            // In the decimal part, periods without value are named only if they are in the period of least value
+            // (ex. 1.0 is read, "one and zero tenths")
             if (this.type == 'decimal' && period_position > 1) {
                 return true;
             }
