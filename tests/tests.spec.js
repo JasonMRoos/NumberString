@@ -51,6 +51,11 @@ describe("NumberString", function () {
                 expect(result).toEqual('seventy-four thousand three hundred twenty-eight');                
             });
 
+            it ("can spell 100", function () {
+                result = new N2T.NumberString('100').spell();
+                expect(result).toEqual('one hundred');
+            });
+
             it("can handle multiple named periods", function() {
                 result = new N2T.NumberString('1256').spell();
                 expect(result).toEqual('one thousand two hundred fifty-six');

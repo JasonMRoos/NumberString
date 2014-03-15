@@ -38,6 +38,10 @@
             : this.getOnes();
     }
 
+    Period.prototype.hasTensOrOnes = function () {
+        return this.getTensAndOnes() > 0;
+    }
+
     Period.prototype.hasHundreds = function () {
         return this.getHundreds() > 0;
     }
@@ -61,9 +65,9 @@
                 N2T.i18n[language].ones_and_teens[this.getOnes()];            
         } else if (this.hasOnes()) {
             return N2T.i18n[language].ones_and_teens[this.getOnes()];
-        } else {
-            return N2T.i18n[language].tens[this.getTens()];
         }
+
+        return N2T.i18n[language].tens[this.getTens()];
     }
 
     function hundredsSpelled() {
@@ -73,9 +77,13 @@
     }
 
     Period.prototype.spell = function () {
-        return this.hasHundreds()
-            ? hundredsSpelled.call(this) + ' ' + tensAndOnesSpelled.call(this)        
-            : tensAndOnesSpelled.call(this);  
+        if (this.hasHundreds() && this.hasTensOrOnes()) {
+            return hundredsSpelled.call(this) + ' ' + tensAndOnesSpelled.call(this);
+        } else if (this.hasHundreds()) {
+            return hundredsSpelled.call(this);
+        }
+
+        return tensAndOnesSpelled.call(this);
     }
 
     global_object.N2T = global_object.N2T || {};
