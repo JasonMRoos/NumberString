@@ -49,15 +49,15 @@
         var is_zero_number = period_value == 0 && num_periods == 1 && this.type == 'whole';
 
         if (period_value == 0 && !is_zero_number) {
-            // In the whole part, periods without value are only named if they are in the ones place (ex. 1000)
+            // In the whole part, periods without value are never named (ex. 1000), with the exception of '0'.
             if (this.type == 'whole' && period_position > 0) {
                 return true;
             }
 
-            // In the decimal part, periods without value are only named if they are in the period of least value (ex. .0001)
+            // In the decimal part, periods without value are named only if they are in the period of least value (ex. .0001)
             if (this.type == 'decimal' && period_position > 1) {
                 return true;
-            }                                    
+            }
         }
 
         return false;
