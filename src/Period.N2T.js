@@ -13,11 +13,10 @@
         language = N2T.i18n.getLanguage();
 
         this.value = value;
-        this.value_as_string = value + '';
     }
 
     Period.prototype.getOnes = function () {
-        return this.value_as_string[this.value_as_string.length - 1];
+        return this.value[this.value.length - 1];
     }
 
     Period.prototype.hasOnes = function () {
@@ -25,7 +24,7 @@
     }
 
     Period.prototype.getTens = function () {
-        return this.value_as_string[this.value_as_string.length - 2];
+        return this.value[this.value.length - 2];
     }
 
     Period.prototype.hasTens = function () {
@@ -47,7 +46,7 @@
     }
 
     Period.prototype.getHundreds = function () {
-        return this.value_as_string[this.value_as_string.length - 3];
+        return this.value[this.value.length - 3];
     }
 
     Period.prototype.hasTeens = function () {
