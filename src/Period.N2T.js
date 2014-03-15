@@ -71,9 +71,9 @@
     }
 
     function hundredsSpelled() {
-        return this.hasHundreds()
-            ? N2T.i18n[language].ones_and_teens[this.getHundreds()] + ' ' + N2T.i18n[language].periods[1]
-            : '';
+        if (this.hasHundreds()) {
+            return N2T.i18n[language].ones_and_teens[this.getHundreds()] + ' ' + N2T.i18n[language].periods[1]
+        }
     }
 
     Period.prototype.spell = function () {
