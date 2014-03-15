@@ -150,6 +150,11 @@ describe("NumberString", function () {
                     new N2T.NumberString('15.79.3');
                 }).toThrow(error_msg);
             });
+
+            it("can handle decimals passed the hundredths place", function() {
+                result = new N2T.NumberString('1.0001').spell();
+                expect(result).toEqual('one and one ten-thousandth');
+            });
         });
     });
 
@@ -176,6 +181,8 @@ describe("NumberString", function () {
                 result = new N2T.NumberString('3.5').spell();
                 expect(result).toEqual('tres unidades, cinco décimos');
             });
+
+            // Properly pluralizes the fraction part
         });
     });
 });

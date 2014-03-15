@@ -45,6 +45,24 @@
         }
     }
 
+    function isUnnamedPeriod(period_value, period_position, num_periods) {
+        var is_zero_number = period_value == 0 && num_periods == 1 && this.type == 'whole';
+
+        if (period_value == 0 && !is_zero_number) {
+            // In the whole part, periods without value are only named if they are in the ones place (ex. 1000)
+            if (this.type == 'whole' && period_position > 0) {
+                return true;
+            }
+
+            // In the decimal part, periods without value are only named if they are in the period of least value (ex. .0001)
+            if (this.type == 'decimal' && period_position > 1) {
+                return true;
+            }                                    
+        }
+
+        return false;
+    }
+
     NumberPart.prototype.spell = function() {
         var periods = this.getPeriods(), 
             period_index = 0,
@@ -55,8 +73,7 @@
         for (; period_index < periods.length; period_index++, period_position--) {
             period_value = periods[period_index];
 
-            // Periods without value are only named if they are in the ones place
-            if (period_value == 0 && period_value != '0') {
+            if (isUnnamedPeriod.call(this, period_value, period_position, periods.length)) {
                 continue;
             }
 
